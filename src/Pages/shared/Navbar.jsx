@@ -1,4 +1,4 @@
-import React from 'react';
+import { CiSearch } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar text-base flex justify-between lg:px-24">
+        <div className="navbar pt-8 text-base flex justify-between lg:px-24">
             <div className="">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,9 +27,9 @@ const Navbar = () => {
             </div>
 
             <div className=" text-white  lg:gap-12">
-                <label className="input rounded-lg border border-white text-white bg-[#FFFFFF33] flex items-center gap-2">
-                    <input type="text" className="grow " placeholder="Search your Destination..." />
-
+                <label className="input pr-24 rounded-lg border border-white  bg-[#FFFFFF33] flex items-center gap-2">
+                    <CiSearch />
+                    <input type="text" className="grow placeholder:text-white" placeholder="Search your Destination..." />
                 </label>
                 <ul className="menu menu-horizontal  lg:gap-12 px-1">
                     {navLInks}
