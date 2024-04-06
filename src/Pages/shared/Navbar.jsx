@@ -1,17 +1,20 @@
 import { CiSearch } from "react-icons/ci";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+    const location = useLocation()
+    const defBlack = location.pathname;
+
     const navLInks = <>
         <Link to="/">News</Link>
-        <Link to="/">Destination</Link>
+        <Link to="/placeDetails">Destination</Link>
         <Link to="/">Blog</Link>
         <Link to="/">Contact</Link>
 
     </>
 
     return (
-        <div className="navbar pt-8 text-base flex justify-between lg:px-24">
+        <div className="navbar pt-8 text-base flex justify-between px-4 lg:px-24">
             <div className="">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -21,20 +24,26 @@ const Navbar = () => {
                         {navLInks}
                     </ul>
                 </div>
-                <Link to="/" className="w-28">
-                    <img src="/logo.png" alt="" />
+                <Link to="/" >
+                    {
+                        defBlack === "/" ?
+                            <img src="/logo.png" alt="" />
+                            : <img src="/logob.png" alt="" />
+                    }
                 </Link>
             </div>
 
-            <div className=" text-white  lg:gap-12">
-                <label className="input pr-24 rounded-lg border border-white  bg-[#FFFFFF33] flex items-center gap-2">
-                    <CiSearch />
-                    <input type="text" className="grow placeholder:text-white" placeholder="Search your Destination..." />
-                </label>
+            <div className="lg:gap-12">
+                {
+                    defBlack === "/" ? <label className="input pr-24 rounded-lg border border-white  bg-[#FFFFFF33] flex items-center gap-2">
+                        <CiSearch />
+                        <input type="text" className="grow placeholder:text-white" placeholder="Search your Destination..." />
+                    </label> : ""
+                }
                 <ul className="menu menu-horizontal  lg:gap-12 px-1">
                     {navLInks}
                 </ul>
-                <Link className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
+                <Link to="/login" className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
             </div>
         </div>
     );
