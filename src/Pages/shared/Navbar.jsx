@@ -1,9 +1,18 @@
+import { useContext } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, userSingOut } = useContext(AuthContext)
+
     const location = useLocation()
     const defBlack = location.pathname;
+
+    const handleLogOut = () => {
+        userSingOut()
+            .then("user logOut successfully")
+    }
 
     const navLInks = <>
         <Link to="/">News</Link>
@@ -43,7 +52,12 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal  lg:gap-12 px-1">
                     {navLInks}
                 </ul>
-                <Link to="/login" className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
+                {
+                    user ? <Link onClick={handleLogOut} className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Log out</Link>
+                        : <Link to="/login" className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
+                }
+
+
             </div>
         </div>
     );

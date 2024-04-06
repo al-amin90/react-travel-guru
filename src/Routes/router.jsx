@@ -3,6 +3,7 @@ import Home from "../Pages/Home/Home";
 import Root from "../layout/Root";
 import Login from "../Pages/Login/Login";
 import PlaceDetails from "../Pages/PlaceDetails/PlaceDetails";
+import SingUp from "../Pages/SingUp/SingUp";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +12,8 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('/places.json')
             },
             {
                 path: '/login',
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: '/placeDetails',
                 element: <PlaceDetails></PlaceDetails>
+            },
+            {
+                path: '/singup',
+                element: <SingUp></SingUp>
             }
         ]
     },

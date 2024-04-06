@@ -6,7 +6,7 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import Navbar from "../shared/Navbar";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import face from "../../assets/face.png"
 import google from "../../assets/google.png"
@@ -14,36 +14,45 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 
-const Login = () => {
-    const { userLogIn, singWithFacebook, singWithGoogle } = useContext(AuthContext)
-    const location = useLocation();
+const SingUp = () => {
+    const { createUser, singWithFacebook, singWithGoogle } = useContext(AuthContext)
 
-
+    const [error, setError] = useState(null)
     const [success, setSuccess] = useState(null)
+    // console.log(createUser);
 
-    const handleLogin = e => {
+
+    const handleSingUp = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget);
 
+        const firstName = form.get("firstName")
+        const secondName = form.get("secondName")
         const email = form.get("email")
         const password = form.get('password')
-
-        console.log(email, password);
+        const confirmPassword = form.get("confirmPassword")
+        console.log(firstName, secondName, email, password, confirmPassword);
 
 
         // reset error & success 
+        setError('')
         setSuccess('')
 
-        userLogIn(email, password)
+        // validation 
+        if (password !== confirmPassword) {
+            setError("Password didn't matched")
+        }
+
+        createUser(email, confirmPassword)
             .then(result => {
                 console.log(result.user);
-                setSuccess("user login successfully")
+                setSuccess("Account Created successfully")
                 e.target.reset()
             })
             .catch(error => {
-                console.log(error);
+                setError(error.message)
+                console.log(error)
             })
-
     }
 
     const handleSingFacebook = () => {
@@ -62,41 +71,44 @@ const Login = () => {
             })
     }
 
-
     return (
-
         <div className="text-black">
             <Navbar></Navbar>
             <div className="flex flex-col my-8 items-center justify-center">
                 <Card color="transparent" className="border border-[#ABABAB] rounded px-14 py-7" shadow={false}>
                     <Typography variant="h4" color="blue-gray">
-                        Login
+                        Create an account
                     </Typography>
 
-                    <form onSubmit={handleLogin} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+                    <form onSubmit={handleSingUp} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                         <div className="mb-1 font-bold flex flex-col gap-6">
+                            <Input className="font-bold" variant="standard" label="First Name" placeholder="First Name" name="firstName" color="black" />
+                            <Input variant="standard" label="Last Name" name="secondName" placeholder="Last Name" color="black" />
+                            <Input variant="standard" label="Username or Email" placeholder="Username or Email" required name="email" color="black" />
+                            <Input variant="standard" label="Password" placeholder="Password" required name="password" color="black" />
+                            <Input variant="standard" required label="Confirm Password" placeholder="Confirm Password" name="confirmPassword" color="black" />
 
-                            <Input variant="standard" name="email" label="Username or Email" placeholder="Username or Email" color="black" />
-                            <Input variant="standard" name="password" label="Password" placeholder="Password" color="black" />
-
+                            {
+                                error && <p className="text-red-600 text-center">{error}</p>
+                            }
                             {
                                 success && <p className="text-green-600 text-center">{success}</p>
                             }
                         </div>
 
                         <Button type="submit" className="mt-6 px-7 border-none capitalize bg-[#F9A51A] text-black rounded-none" fullWidth>
-                            Login
+                            <Link to="/login" >Create an account </Link>
                         </Button>
                         <Typography color="gray" className="mt-4 text-center font-normal">
-                            Don’t have an account? {" "}
-                            <Link to="/singup" className="font-medium text-[#F9A51A] underline">
-                                Create an account
+                            Already have an account?{" "}
+                            <Link to="/login" className="font-medium text-[#F9A51A] underline">
+                                Login
                             </Link>
                         </Typography>
                     </form>
                 </Card>
-                <div onClick={handleSingFacebook} className="divider font-semibold w-1/4 mx-auto my-6">Or</div>
-                <button className="pl-1.5 btn bg-transparent  border border-[#C7C7C7] rounded-full flex items-center justify-between w-2/6">
+                <div className="divider font-semibold w-1/4 mx-auto my-6">Or</div>
+                <button onClick={handleSingFacebook} className="pl-1.5 btn bg-transparent  border border-[#C7C7C7] rounded-full flex items-center justify-between w-2/6">
                     <img src={face} alt="" />
                     <h5 className="font-semibold ">Continue with Facebook</h5>
                     <h5></h5>
@@ -111,4 +123,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SingUp;

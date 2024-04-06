@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Cox's Bazar",
+        "description": "Experience the mesmerizing beauty of Cox's Bazar, boasting the world's longest natural sandy sea beach. Dive into crystal-clear waters and indulge in fresh seafood delicacies. Explore nearby Himchari and Inani beaches for breathtaking sunsets and serene landscapes.",
+        "image": "https://i.postimg.cc/RZDfKbx3/banner.png",
+        "tum_image": "https://i.postimg.cc/QC8VRprG/Sajek.png"
+    },
+    {
+        "id": 2,
+        "name": "Sreemangal",
+        "description": "Discover Sreemangal, the tea capital of Bangladesh, nestled amid lush green tea gardens and rolling hills. Immerse yourself in the tranquil ambiance of Lawachara National Park, home to diverse wildlife. Don't miss the chance to savor the renowned seven-layered tea in local tea stalls.",
+        "image": "https://i.postimg.cc/fT0hMVW6/2.jpg",
+        "tum_image": "https://i.postimg.cc/gJd0ZvjX/Sreemongol.png"
+    },
+    {
+        "id": 3,
+        "name": "Sundarbans",
+        "description": "Explore the mysterious Sundarbans, the largest mangrove forest in the world and a UNESCO World Heritage Site. Embark on thrilling boat safaris to catch glimpses of Royal Bengal tigers and unique wildlife. Witness enchanting sunsets and immerse yourself in the rich biodiversity of this mystical ecosystem.",
+        "image": "https://i.postimg.cc/Dw9N56qZ/Adobe-Stock-608813310-Preview.jpg",
+        "tum_image": "https://i.postimg.cc/XN1yTzXs/sundorbon.png"
+    },
+    {
+        "id": 4,
+        "name": "Bandarban",
+        "description": "Experience the rugged beauty of Bandarban, nestled in the Chittagong Hill Tracts, featuring breathtaking landscapes and indigenous culture. Trek through verdant hills to discover hidden waterfalls and tribal villages. Marvel at the panoramic views from Nilgiri and explore the tranquility of the Sangu River.",
+        "image": "https://i.postimg.cc/x11mhV3p/giant-43362.jpg",
+        "tum_image": "https://i.postimg.cc/HLKhvCFb/Sajek-1.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Rangamati",
+        "description": "Explore the serene beauty of Rangamati, nestled around the captivating Kaptai Lake amid lush green hills. Cruise along the shimmering waters and visit traditional tribal villages to experience the unique lifestyle of the indigenous people. Indulge in adventurous activities like hiking, boating, and exploring the surrounding hills.",
+        "image": "https://i.postimg.cc/HsRHDQwG/D5z-H9-Syx-CKd-Bn-Ja-Fe-Hn-L3sv-Qi9-ZN2-Xz-XDbz-H7-Wc9smsam-Mnwge-B3bi-Dw-HYm7-WSVi-Unz9k-Jzi6j-Zt4-Hkv-Lwkgrt-Wn1-G1ft-LGL5-LNP.jpg",
+        "tum_image": "https://i.postimg.cc/zGLVFvdj/Sajek.jpg"
+    }
+]

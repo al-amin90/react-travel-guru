@@ -1,0 +1,22 @@
+.swiper-button-prev {
+    position: relative;
+    bottom: -2.5rem;
+    display: block;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 100%;
+    background-color: white !important;
+}
+
+.swiper-button-next {
+    position: relative;
+    top: -0.2rem;
+    left: 5rem;
+    display: block;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    border-radius: 100%;
+    background-color: white !important;
+}
