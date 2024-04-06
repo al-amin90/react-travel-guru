@@ -1,4 +1,4 @@
-import banner from '../../assets/banner.png'
+
 import Navbar from '../shared/Navbar';
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,6 +21,7 @@ const Home = () => {
 
     const placesAll = useLoaderData();
 
+    // click btn slider 
     useEffect(() => {
 
         const prav = document.getElementsByClassName('swiper-button-prev')[0]
@@ -40,18 +41,12 @@ const Home = () => {
         const eId = element.innerText
 
         const place = placesAll.find(p => p.id === +eId);
-        // const place = placesAll.map(p => console.log(typeof p.id));
         setPlace(place)
     }
 
 
-
-
-
     const { id, name, tum_image, image, description } = place || placesAll[0];
-    console.log(name);
-    // nextSibling
-    // console.log(swiperRef.nextSibling);
+
 
     return (
         <div className=''>
@@ -63,12 +58,12 @@ const Home = () => {
                     <div className='flex flex-col  justify-center min-h-[calc(100vh-96px)]'>
                         <div className="flex gap-9 overflow-hidden text-white">
                             <div className="max-w-md ml-24">
-                                <h1 onClick={handleSl} className="mb-5 text-7xl font-bebas ">{name}</h1>
+                                <h1 className="mb-5 text-7xl font-bebas ">{name}</h1>
                                 {
                                     description.length < 200 ? <p className="mb-5 font-normal text-sm">{description}</p>
                                         : <p className="mb-5 font-normal text-sm">{description.slice(0, 200)}...</p>
                                 }
-                                <Link to="/login" className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Booking <FaArrowRight className='text-lg' /></Link>
+                                <Link to={`/booking/${id}`} className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Booking <FaArrowRight className='text-lg' /></Link>
                             </div>
 
 

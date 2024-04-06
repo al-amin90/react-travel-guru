@@ -6,20 +6,32 @@ import {
     Typography,
 } from "@material-tailwind/react";
 import Navbar from "../shared/Navbar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import face from "../../assets/face.png"
 import google from "../../assets/google.png"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useForm } from "react-hook-form";
 
 
 const Login = () => {
     const { userLogIn, singWithFacebook, singWithGoogle } = useContext(AuthContext)
     const location = useLocation();
-
+    console.log(location);
+    const navigate = useNavigate();
 
     const [success, setSuccess] = useState(null)
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => console.log(data)
+
 
     const handleLogin = e => {
         e.preventDefault()
@@ -39,6 +51,7 @@ const Login = () => {
                 console.log(result.user);
                 setSuccess("user login successfully")
                 e.target.reset()
+                navigate(`/${location.state}`)
             })
             .catch(error => {
                 console.log(error);
@@ -84,7 +97,7 @@ const Login = () => {
                             }
                         </div>
 
-                        <Button type="submit" className="mt-6 px-7 border-none capitalize bg-[#F9A51A] text-black rounded-none" fullWidth>
+                        <Button type="submit" className="mt-6 px-7 border-none capitalize bg-[#F9A51A] text-black text-base font-medium rounded-none" fullWidth>
                             Login
                         </Button>
                         <Typography color="gray" className="mt-4 text-center font-normal">

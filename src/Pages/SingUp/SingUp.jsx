@@ -96,7 +96,7 @@ const SingUp = () => {
                             }
                         </div>
 
-                        <Button type="submit" className="mt-6 px-7 border-none capitalize bg-[#F9A51A] text-black rounded-none" fullWidth>
+                        <Button type="submit" className="mt-6 px-7 border-none capitalize bg-[#F9A51A] text-black text-base font-medium rounded-none" fullWidth>
                             <Link to="/login" >Create an account </Link>
                         </Button>
                         <Typography color="gray" className="mt-4 text-center font-normal">

@@ -35,7 +35,7 @@ const Navbar = () => {
                 </div>
                 <Link to="/" >
                     {
-                        defBlack === "/" ?
+                        defBlack === (("/" || "/booking/")) ?
                             <img src="/logo.png" alt="" />
                             : <img src="/logob.png" alt="" />
                     }
@@ -44,7 +44,7 @@ const Navbar = () => {
 
             <div className="lg:gap-12">
                 {
-                    defBlack === "/" ? <label className="input pr-24 rounded-lg border border-white  bg-[#FFFFFF33] flex items-center gap-2">
+                    defBlack === ("/" || "/booking/") ? <label className="input pr-24 rounded-lg border border-white  bg-[#FFFFFF33] flex items-center gap-2">
                         <CiSearch />
                         <input type="text" className="grow placeholder:text-white" placeholder="Search your Destination..." />
                     </label> : ""
@@ -53,8 +53,8 @@ const Navbar = () => {
                     {navLInks}
                 </ul>
                 {
-                    user ? <Link onClick={handleLogOut} className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Log out</Link>
-                        : <Link to="/login" className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
+                    user ? <Link onClick={handleLogOut} className="btn px-7 border-none rounded-lg bg-[#F9A51A] text-base font-medium text-black">Log out</Link>
+                        : <Link to="/login" className="btn px-7 font-medium border-none rounded-lg bg-[#F9A51A] text-black">Login</Link>
                 }
 
 
